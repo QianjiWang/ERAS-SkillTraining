@@ -23,9 +23,9 @@ from tqdm.auto import tqdm
 dataset_path =           (".\\_PolicyProject3_PGAS\\_trained_models_env3\\_teach1_dataset_amplify1")
 MinMax_dir_path =        (".\\_PolicyProject3_PGAS\\_trained_models_env3\\MinMax")
 
-ckpt_path =              (".\\_PolicyProject3_PGAS\\env3_train对比\\9_RDT_SigLIP\\model.ckpt")
-output_dir =             (".\\_PolicyProject3_PGAS\\env3_train对比\\9_RDT_SigLIP")
-training_loss_csv_path = (".\\_PolicyProject3_PGAS\\env3_train对比\\9_RDT_SigLIP\\loss.csv")
+ckpt_path =              (".\\_PolicyProject3_PGAS\\env3_train对比\\9_RDT_ResNet50\\model.ckpt")
+output_dir =             (".\\_PolicyProject3_PGAS\\env3_train对比\\9_RDT_ResNet50")
+training_loss_csv_path = (".\\_PolicyProject3_PGAS\\env3_train对比\\9_RDT_ResNet50\\loss.csv")
 batch_reduce = 8 # GPU不足时,batch_size缩小倍数
 max_iterations = 50000 * batch_reduce  # 目标最大迭代次数
 "记录标记!"
@@ -350,8 +350,8 @@ import DiffusionPolicy_Networks_VE1 as nets_VE1
 # if you have multiple camera views, use seperate encoder weights for each view.
 # vision_encoder_1 = nets.get_resnet('resnet18')
 # vision_encoder_2 = nets.get_resnet('resnet18')
-vision_encoder_1 = nets_VE1.SigLIPVisionEncoder()
-vision_encoder_2 = nets_VE1.SigLIPVisionEncoder()
+vision_encoder_1 = nets_VE1.ResNet50VisionEncoder()
+vision_encoder_2 = nets_VE1.ResNet50VisionEncoder()
 # vision_encoder_1 = nets.get_resnet_with_attention('resnet18')
 # vision_encoder_2 = nets.get_resnet_with_attention('resnet18')
 # IMPORTANT!
