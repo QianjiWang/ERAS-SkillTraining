@@ -248,10 +248,10 @@ def replace_bn_with_gn(root_module: nn.Module, features_per_group: int=16) -> nn
 
     return replace_submodules(root_module, lambda m: isinstance(m, nn.BatchNorm2d), replace_fn)
 
-# Define SigLIP-based encoder
-class SigLIPVisionEncoder(nn.Module):
+# Define ResNet50-based encoder
+class ResNet50VisionEncoder(nn.Module):
     def __init__(self, base_model='resnet50', features_per_group=16, output_dim=512):
-        super(SigLIPVisionEncoder, self).__init__()
+        super(ResNet50VisionEncoder, self).__init__()
         # Initialize a standard ResNet (could be resnet50 or others)
         self.resnet = torchvision.models.resnet50(pretrained=True)
         self.resnet.fc = nn.Identity()  # Remove the final fully connected layer
@@ -333,8 +333,8 @@ def test_encoder():
     # Example input: batch_size=1, obs_horizon=10, channels=3, height=256, width=256
     image_input = torch.zeros((1, 10, 3, 256, 256))  # Simulating an image batch
 
-    # Choose encoder type ('SigLIP' or 'DINOv2')
-    vision_encoder = SigLIPVisionEncoder()
+    # Choose encoder type ('ResNet50' or 'DINOv2')
+    vision_encoder = ResNet50VisionEncoder()
     image_features = vision_encoder(image_input.flatten(end_dim=1))  # Flatten input as required
 
     print(f"Output shape of visual features: {image_features.shape}")
