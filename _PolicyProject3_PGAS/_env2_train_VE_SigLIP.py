@@ -21,9 +21,9 @@ from diffusers.training_utils import EMAModel
 from diffusers.optimization import get_scheduler
 from tqdm.auto import tqdm
 dataset_path =           (".\\_PolicyProject3_PGAS\\_trained_models_env2\\_teach1_dataset_amplify1")
-ckpt_path =              (".\\_PolicyProject3_PGAS\\_trained_models_env2\\model_PolicyProject1_VE_SigLIP.ckpt")
+ckpt_path =              (".\\_PolicyProject3_PGAS\\_trained_models_env2\\model_PolicyProject1_VE_ResNet50.ckpt")
 output_dir =             (".\\_PolicyProject3_PGAS\\_trained_models_env2")
-training_loss_csv_path = (".\\_PolicyProject3_PGAS\\_trained_models_env2\\training_loss_VE_SigLIP.csv")
+training_loss_csv_path = (".\\_PolicyProject3_PGAS\\_trained_models_env2\\training_loss_VE_ResNet50.csv")
 MinMax_dir_path =        (".\\_PolicyProject3_PGAS\\_trained_models_env2\\MinMax")
 
 img_height = [256,256]
@@ -375,8 +375,8 @@ import DiffusionPolicy_Networks_VE1 as nets_VE1
 # if you have multiple camera views, use seperate encoder weights for each view.
 # vision_encoder_1 = nets.get_resnet_with_attention('resnet18')
 # vision_encoder_2 = nets.get_resnet_with_attention('resnet18')
-vision_encoder_1 = nets_VE1.SigLIPVisionEncoder()
-vision_encoder_2 = nets_VE1.SigLIPVisionEncoder()
+vision_encoder_1 = nets_VE1.ResNet50VisionEncoder()
+vision_encoder_2 = nets_VE1.ResNet50VisionEncoder()
 "可选择冻结预训练权重"
 for param in vision_encoder_1.parameters():
     param.requires_grad = False
